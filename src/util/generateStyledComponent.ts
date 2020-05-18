@@ -1,5 +1,5 @@
 import { workspace } from "vscode";
-import { Property, IStyleAttribute } from "./parsing";
+import { Property, IStyleAttribute } from "./parseDocument";
 import generate from "@babel/generator";
 import {
   variableDeclaration,
@@ -9,7 +9,7 @@ import {
   memberExpression,
   callExpression,
   templateLiteral,
-  templateElement
+  templateElement,
 } from "@babel/types";
 
 const camelCaseToKebabCase = (input: string) => {
@@ -50,12 +50,13 @@ export const generateStyledComponent = (
       variableDeclarator(
         identifier(stycoName),
         taggedTemplateExpression(
+          // Is default tag? just concat with a '.', otherwise wrap with '()'
           elementName[0] === elementName[0].toLowerCase()
             ? memberExpression(identifier("styled"), identifier(elementName))
             : callExpression(identifier("styled"), [identifier(elementName)]),
           templateLiteral([templateElement({ raw: styleString })], [])
         )
-      )
+      ),
     ])
   ).code;
 };

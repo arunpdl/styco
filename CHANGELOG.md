@@ -2,6 +2,21 @@
 
 All notable changes to the "styco" extension will be documented in this file.
 
+
+## [0.2.1]
+
+- Fix missing support for numeric values.
+
+
+## [0.2.0]
+
+- Automatically create import statement if not existent (#1).
+
+## [0.1.5]
+
+- Add support for optional chaining.
+- Add support for template literal values. (#15 Thanks to [Stenbaek](https://github.com/Stenbaek))
+
 ## [0.1.4]
 
 - Add support for numeric values.

@@ -2,7 +2,7 @@
   "name": "styco",
   "displayName": "styco - styled components converter",
   "description": "Transform tags with inline style-props to styled components",
-  "version": "0.1.4",
+  "version": "0.2.1",
   "engines": {
     "vscode": "^1.41.0"
   },
@@ -36,6 +36,11 @@
     "configuration": {
       "title": "StyCo",
       "properties": {
+        "styco.insertImportStatement": {
+          "type": "boolean",
+          "default": true,
+          "description": "Insert import statement of the detected library if not existent"
+        },
         "styco.orderStyleByName": {
           "type": "boolean",
           "default": false,
@@ -63,21 +68,27 @@
   "scripts": {
     "vscode:prepublish": "webpack --mode production",
     "webpack": "webpack --mode development",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'"
+    "dev": "webpack --mode development --watch",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-typescript": "^7.9.0",
     "@babel/types": "^7.7.4",
     "@types/babel__generator": "^7.6.1",
     "@types/babel__traverse": "^7.0.8",
     "@types/glob": "^7.1.1",
-    "@types/mocha": "^5.2.6",
+    "@types/jest": "^25.2.2",
     "@types/node": "13.1.0",
     "@types/vscode": "1.41.0",
+    "babel-jest": "^26.0.1",
     "glob": "^7.1.4",
-    "mocha": "^6.1.4",
+    "jest": "^26.0.1",
     "ts-loader": "^7.0.4",
     "tslint": "5.20.1",
-    "typescript": "3.7.4",
+    "typescript": "^3.9.2",
     "vscode-test": "^1.0.0-next.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
